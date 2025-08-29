@@ -1,3 +1,3 @@
 # Python-Data-Analytics
-My projects in Data Analytics for the portfolio
-Project 1 [view_code](weather-analysis.py)
+My projects in Data Analytics for the portfolio<br>
+Project 1 Weather Analysis [view_code](weather-analysis.py)
