@@ -220,7 +220,7 @@ def statistics():
     tk=NewWindow()
     
     tk.geometry("500x200")
-    tk.resizable(False,False)
+    tk.resizable(True,True)
     
     
     
