@@ -14,13 +14,14 @@ There are two modes(Search and Edit). Search mode allows searching any date ente
 Edit mode allows editing any data, which after pressing Enter automatically save. If this data doesn't match necessary format, the error window will appear.<br>
 There is a button Hint, where you can read information.<br>
 There is a list, where you can search any data that are stored in file.<br>
-<img width="249" height="278" alt="Image" src="https://github.com/user-attachments/assets/caf39f37-3921-45e4-8455-f222b3aef8fe" />
+<img width="871" height="405" alt="Image" src="https://github.com/user-attachments/assets/9493e649-873a-4e4e-8bc2-2999ae3d2bfd" />
 <br>
 There is a button Add, which allows adding new data. After pressing this button the window appears, where you can enter data in appropriate entrys.<br>
-[Weather_add](Weather_add.png)
+<img width="249" height="278" alt="Image" src="https://github.com/user-attachments/assets/caf39f37-3921-45e4-8455-f222b3aef8fe" />
 <br>
 There is a button Statistics, where you can see minimum temperature graphics of each year.To choose year, just click checkbutton with appropriate year<br>
-[Weather-graphics](Weather-graphics.png)
+<img width="618" height="322" alt="Image" src="https://github.com/user-attachments/assets/e84aecf6-c75d-4b10-8df9-03e15cfd7ce0" />
+<br>
 ---USED---<br>
 -Tkinter<br>
 -OOP<br>
