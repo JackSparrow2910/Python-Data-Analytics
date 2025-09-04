@@ -52,7 +52,7 @@ Display average score by each publisher<br>
 <b>PROJECT 3</b><br>
 Nintendo Switch Games [view_code](Nintendo_Switch_Games.py)<br>
 <b>---GENERAL---</b><br>
-This program filters,analyses and displays data from [table](Nintendo Switch Games.csv), which was downloaded in Kaggles<br>
+This program filters,analyses and displays data from [table](Nintendo_Switch_Games.csv), which was downloaded in Kaggles<br>
 This table contains such columns as Position,Name, Publisher, Developer, VGChartz Score, Critic Score, User Score, Total Shipped, Release Date and Last Update<br>
 <b>---INFORMATION---</b><br>
 The program deletes all rows where VGChartz Score AND Critic Score AND User Score are NULL.<br>
