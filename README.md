@@ -32,6 +32,7 @@ Also after using the program, json-file is updated.<br>
 Video Games Sales [view_sql](games.sql)<br>
 <b>---GENERAL---</b><br>
 In this project several queries are done in [table](vgsales.csv), which was downloaded in Kaggles<br>
+This table contains such columns as ID, Rank, Name, Platform, Year, Publisher, Developer, Critic_Score, User_Score and NA_Sales
 <b>---INFORMATION---</b><br>
 <b>First Query:</b><br>
 Select games where publisher is Nintendo and score(Critic or User)>8<br>
@@ -47,6 +48,32 @@ Display average score by each publisher<br>
 [Result](Scores_by_publisher.csv)<br>
 <b>---USED---</b><br>
 -SQL(SELECT,WHERE,Aggregate functions, GROUP BY, ORDER BY)<br>
+<br>
+<b>PROJECT 3</b><br>
+Nintendo Switch Games [view_code](Nintendo_Switch_Games.py)<br>
+<b>---GENERAL---</b><br>
+This program filters,analyses and displays data from [table](Nintendo Switch Games.csv), which was downloaded in Kaggles<br>
+This table contains such columns as Position,Name, Publisher, Developer, VGChartz Score, Critic Score, User Score, Total Shipped, Release Date and Last Update<br>
+<b>---INFORMATION---</b><br>
+The program deletes all rows where VGChartz Score AND Critic Score AND User Score are NULL.<br>
+Also the it fills NULL this way:<br>
+-if in a row among scores only 1 NULL, then this NULL = average of two remaining scores<br>
+-if in a row among scores 2 NULL, then these NULL = remaining value of score, which isn't NULL<br>
+The program adds new column with average score of each game.<br>
+Also it displays statistics values(mean,median,mode,variance,standart deviation)<br>
+<img width="318" height="173" alt="Image" src="https://github.com/user-attachments/assets/d77fd033-26f4-451a-b4db-a3c884b3bfc3" /><br>
+The program creates a histogram, where you can see the best game of each year(X-Asis:Year, Y-Asis:Score).<br>
+<img width="4000" height="4000" alt="Image" src="https://github.com/user-attachments/assets/eeed78e8-86c4-416e-b9c4-b52ba84eeac8" /><br>
+Also it creates a pie diagram, where you can see how many games from Nintendo Developer in Nintendo Switch.<br>
+<img width="640" height="480" alt="Image" src="https://github.com/user-attachments/assets/e1528258-b4f9-4044-892c-a19ba494a2c7" /><br>
+Finally, the program saves updated csv file and two diagrams.<br>
+[Updated_File](update_nintendo_switch.csv)<br>
+<b>---USED---</b><br>
+-NumPy<br>
+-Matplotlib<br>
+-Pandas<br>
+
+
 
 
 
