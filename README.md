@@ -4,11 +4,17 @@ My projects in Data Analytics for the portfolio<br>
 <b>PROJECT 1</b><br> 
 Weather Analysis [view_code](weather-analysis.py)<br>
 ---GENERAL---<br>
-In this project you can view,edit and add datas about weather. (Datas are random).<br>
-
-<br>
+In this project you can view,edit and add datas about weather. (Data are random).<br>
+Data are in json-file [view_file](rdu-weather-history.json)<br>
 ---INFORMATION---<br>
-
-
-<br>
+This program display several values(minimum temperature, maximum temperature, 
+precipitation,south-to-north water diversion,average daily wind speed) in entrys.<br>
+There are buttons < and >, which allows viewing datas by each date.<br>
+There are two modes(Search and Edit). Search mode allows searching any date entering data essential for you. Edit mode allows editing any data, which after pressing Enter automatically save.<br>
+There is a button Add, which allows adding new data.<br>
+There is a button Hint, where you can read information.<br>
+There is a list, where you can search any data that are stored in file.<br>
+There is a button Statistics, where you can see minimum temperature graphics of each year.<br>
 ---USED---<br>
+-Tkinter<br>
+-OOP<br>
