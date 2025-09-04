@@ -4,7 +4,8 @@ from tkinter import ttk
 import json
 import datetime
 
-
+#This class which allows create a new object(Label, Button,...), but in parameters can write row, column and 
+#automatically use method grid. However, I still get an access to object(Label, Button, ...)
 class Object:
     def __init__(self,class_name,Row,Column,columnspan=1,rowspan=1,padx=0,pady=0):
         self.wrapped_class=class_name
@@ -12,12 +13,12 @@ class Object:
 
     def __getattr__(self,name):
         return getattr(self.wrapped_class,name)
-
+#Class to create a new window
 class NewWindow(tkinter.Toplevel):
     def __init__(self,title="NewWindow",master=None):
         super().__init__(master=master)
         self.title=title
-
+#Class Entry, which can check valid format of text in entry
 class MyEntry(tkinter.Entry):
     def __init__(self,master=None,state="normal",textvariable=""):
         super().__init__(master=master)
@@ -30,7 +31,7 @@ class MyEntry(tkinter.Entry):
         except:
             tkinter.messagebox.showinfo("Error","Invalid format")
             return False
-
+#Similar to MyEntry, but check valid date
 class DateEntry(tkinter.Entry):
     def __init__(self,master=None,textvariable=""):
         super().__init__(master=master)
@@ -45,7 +46,7 @@ class DateEntry(tkinter.Entry):
             return False
 
 
-
+#Function of button Add, where you can add data
 def add():
     add=NewWindow("Add",window)
     add.geometry("200x200")
@@ -67,7 +68,7 @@ def add():
     add_entrys=[date_entry_add,tmin_entry_add,tmax_entry_add,prcp_entry_add,snow_entry_add,snwd_entry_add,awnd_entry_add]
     button_check=Object(tkinter.Button(add,text="Add",command=lambda:check_add(add_entrys)),7,1)
     
-
+#Check values of entrys in new window, where you add data
 def check_add(entrys):
     global length
     global datas
@@ -79,16 +80,8 @@ def check_add(entrys):
     length+=1
     set_data.add(datas[-1]["date"])
     datas=sorted(datas,key=lambda datas:datas["date"])
-    # main_entrys=[date_entry,tmin_entry,tmax_entry,prcp_entry,snow_entry,snwd_entry,awnd_entry]
-    # zip_entrys=zip(entrys,main_entrys)
-    # for entry,main_entry in zip_entrys:
-    #     if entry.check():
-    #         #TO_DO
 
-
-    #         # main_entry.config(textvariable=tkinter.StringVar(value=entry.get()))
-            
-
+#Check values of entry while using Edit mode
 def check_edit():
     global datas
     if not radio_var.get():
@@ -100,7 +93,7 @@ def check_edit():
             datas[index][property]=entry.get()
         values=[datas[index][property] for property in ["date","tmin","tmax","prcp","snow","snwd","awnd"]]
         
-
+#Button <
 def left():
     global length
     global index
@@ -117,6 +110,7 @@ def left():
     awnd_entry.config(textvariable=tkinter.StringVar(value=datas[index]["awnd"]))
     values=[datas[index][property] for property in ["date","tmin","tmax","prcp","snow","snwd","awnd"]]
 
+#Button >
 def right():
     global length
     global index
@@ -133,6 +127,7 @@ def right():
     awnd_entry.config(textvariable=tkinter.StringVar(value=datas[index]["awnd"]))
     values=[datas[index][property] for property in ["date","tmin","tmax","prcp","snow","snwd","awnd"]]
 
+#Search mode
 def search(dates):
     global values
     if radio_var.get():
@@ -161,7 +156,7 @@ def search(dates):
             snwd_entry.config(textvariable=tkinter.StringVar(value=values[5]))
             awnd_entry.config(textvariable=tkinter.StringVar(value=values[6]))
     
-
+#Radiobuttons: values and states
 def radio(*args):
     if radio_var.get():
         date_entry.bind("<Return>",lambda event:search(date_entry))
@@ -174,7 +169,7 @@ def radio(*args):
             entry.bind("<Return>",lambda event:check_edit())
         button_search.config(state="disabled")
 
-
+#Create a graphics after pressing button Statistics
 def display(canvas,new_datas,selecteds,checkbuttons):
     canvas.delete("all")
     x_0=30
@@ -248,7 +243,8 @@ def statistics():
     for checkbutton in checkbuttons:
         checkbutton.place(x=400,y=y)
         y+=30
-    
+
+#Button 'Hint'
 def help():
     info=NewWindow()
     info.geometry("650x200")
@@ -265,6 +261,7 @@ def help():
     "\nThe Statistics button allows you to look at the graph of minimum temperatures (on average) by month of each year."
     "\nThe < > buttons allow you to change the date")
 
+#Import data from json-file
 datas=json.load(open("rdu-weather-history.json"))
 set_data=set()
 for data in datas:
@@ -275,6 +272,7 @@ window=tkinter.Tk()
 window.geometry("700x300")
 window.resizable(False,False)
 window.title("Weather Report")
+#Labels and Entrys
 date_label=Object(tkinter.Label(window,text="date:"),0,0)
 date_entry=Object(DateEntry(window,textvariable=tkinter.StringVar(value=datas[index]["date"])),0,1,columnspan=2)
 tmin_label=Object(tkinter.Label(window,text="tmin:"),1,0)
@@ -289,16 +287,19 @@ snwd_label=Object(tkinter.Label(window,text="snwd:"),5,0)
 snwd_entry=Object(MyEntry(window,state="readonly",textvariable=tkinter.StringVar(value=datas[index]["snwd"])),5,1,columnspan=2)
 awnd_label=Object(tkinter.Label(window,text="awnd:"),6,0)
 awnd_entry=Object(MyEntry(window,state="readonly",textvariable=tkinter.StringVar(value=datas[index]["awnd"])),6,1,columnspan=2)
+
+#Buttons
 button_left=Object(tkinter.Button(window,text="<",command=left),7,0)
 dates=Object(ttk.Combobox(window,width=10,values=list(sorted(set_data))),7,1)
 button_search=Object(tkinter.Button(window,text="Search",command=lambda:search(dates)),7,2)
 button_right=Object(tkinter.Button(window,text=">",command=right),7,3,padx=5)
 button_add=Object(tkinter.Button(window,width=10,text="Add",command=add),8,1,columnspan=2,pady=5)
 
+#All entrys and values in entrys
 entrys=[date_entry,tmin_entry,tmax_entry,prcp_entry,snow_entry,snwd_entry,awnd_entry]
 values=[datas[index][property] for property in ["date","tmin","tmax","prcp","snow","snwd","awnd"]]
 
-
+#Variable for Radiobuttons
 radio_var=tkinter.BooleanVar()
 radio_var.trace_add("write",radio)
 radio_var.set(True)
@@ -310,5 +311,7 @@ help_label=Object(tkinter.Label(window,text="To discover more, press the button"
 help_button=Object(tkinter.Button(window,text="Hint",command=help),1,6)
 
 window.mainloop()
+#Update a json-file
 with open("rdu-weather-history.json","w") as f:
     json.dump(datas,f)
+
