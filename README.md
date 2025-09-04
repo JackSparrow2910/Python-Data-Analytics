@@ -22,7 +22,7 @@ There is a button Add, which allows adding new data. After pressing this button 
 There is a button Statistics, where you can see minimum temperature graphics of each year.To choose year, just click checkbutton with appropriate year<br>
 <img width="618" height="322" alt="Image" src="https://github.com/user-attachments/assets/e84aecf6-c75d-4b10-8df9-03e15cfd7ce0" />
 <br>
-Also after using the program, json-file is updated.
+Also after using the program, json-file is updated.<br>
 ---USED---<br>
 -Tkinter<br>
 -OOP<br>
