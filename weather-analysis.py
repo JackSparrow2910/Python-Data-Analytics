@@ -291,9 +291,9 @@ awnd_label=Object(tkinter.Label(window,text="awnd:"),6,0)
 awnd_entry=Object(MyEntry(window,state="readonly",textvariable=tkinter.StringVar(value=datas[index]["awnd"])),6,1,columnspan=2)
 button_left=Object(tkinter.Button(window,text="<",command=left),7,0)
 dates=Object(ttk.Combobox(window,width=10,values=list(sorted(set_data))),7,1)
-button_search=Object(tkinter.Button(window,text="Пошук",command=lambda:search(dates)),7,2)
+button_search=Object(tkinter.Button(window,text="Search",command=lambda:search(dates)),7,2)
 button_right=Object(tkinter.Button(window,text=">",command=right),7,3,padx=5)
-button_add=Object(tkinter.Button(window,width=10,text="Додати",command=add),8,1,columnspan=2,pady=5)
+button_add=Object(tkinter.Button(window,width=10,text="Add",command=add),8,1,columnspan=2,pady=5)
 
 entrys=[date_entry,tmin_entry,tmax_entry,prcp_entry,snow_entry,snwd_entry,awnd_entry]
 values=[datas[index][property] for property in ["date","tmin","tmax","prcp","snow","snwd","awnd"]]
