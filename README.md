@@ -14,7 +14,7 @@ There are two modes(Search and Edit). Search mode allows searching any date ente
 Edit mode allows editing any data, which after pressing Enter automatically save. If this data doesn't match necessary format, the error window will appear.<br>
 There is a button Hint, where you can read information.<br>
 There is a list, where you can search any data that are stored in file.<br>
-[Weather_interface](Weather_interface.png)
+<img width="249" height="278" alt="Image" src="https://github.com/user-attachments/assets/caf39f37-3921-45e4-8455-f222b3aef8fe" />
 <br>
 There is a button Add, which allows adding new data. After pressing this button the window appears, where you can enter data in appropriate entrys.<br>
 [Weather_add](Weather_add.png)
