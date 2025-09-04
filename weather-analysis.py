@@ -28,7 +28,7 @@ class MyEntry(tkinter.Entry):
             float(self.get())
             return True
         except:
-            tkinter.messagebox.showinfo("Помилка","Неправильний формат")
+            tkinter.messagebox.showinfo("Error","Invalid format")
             return False
 
 class DateEntry(tkinter.Entry):
@@ -41,13 +41,13 @@ class DateEntry(tkinter.Entry):
             datetime.datetime.strptime(self.get(), "%Y-%m-%d")
             return True
         except:
-            tkinter.messagebox.showinfo("Помилка","Неправильний формат")
+            tkinter.messagebox.showinfo("Error","Invalid format")
             return False
 
 
 
 def add():
-    add=NewWindow("Додати",window)
+    add=NewWindow("Add",window)
     add.geometry("200x200")
     add.resizable(False,False)
     date_label_add=Object(tkinter.Label(add,text="date:"),0,0)
@@ -65,7 +65,7 @@ def add():
     awnd_label_add=Object(tkinter.Label(add,text="awnd:"),6,0)
     awnd_entry_add=Object(MyEntry(add),6,1)
     add_entrys=[date_entry_add,tmin_entry_add,tmax_entry_add,prcp_entry_add,snow_entry_add,snwd_entry_add,awnd_entry_add]
-    button_check=Object(tkinter.Button(add,text="Додати",command=lambda:check_add(add_entrys)),7,1)
+    button_check=Object(tkinter.Button(add,text="Add",command=lambda:check_add(add_entrys)),7,1)
     
 
 def check_add(entrys):
@@ -152,7 +152,7 @@ def search(dates):
             awnd_entry.config(textvariable=tkinter.StringVar(value=datas[index]["awnd"]))
             values=[datas[index][property] for property in ["date","tmin","tmax","prcp","snow","snwd","awnd"]]
         except UnboundLocalError:
-            tkinter.messagebox.showinfo("Помилка","Немає даної дати або введено неправильно")
+            tkinter.messagebox.showinfo("Error","There is no this date or it was inputted wrongly")
             date_entry.config(textvariable=tkinter.StringVar(value=values[0]))
             tmin_entry.config(textvariable=tkinter.StringVar(value=values[1]))
             tmax_entry.config(textvariable=tkinter.StringVar(value=values[2]))
@@ -255,15 +255,15 @@ def help():
     # info.resizable(False,False)
     info_text=tkinter.Text(info,width=75)
     info_text.place(x=10,y=10)
-    info_text.insert("1.0","Є режим шукати,який дозволяє знайти дані за певною датою.\n"
-    "Для цього потрібно ввести дату у форматі YYYY-MM-DD."
-    "\nПотім натиснути Enter."
-    "\nЄ режим редагувати,який дозволяє редагувати дані."
-    "\nДля цього треба переписати деяку інформацію і натиснути Enter."
-    "\nКнопка Пошук дозволяє знаходити дані за датою із випадаючого списку."
-    "\nКнопка Додати дозволяє додати дані."
-    "\nКнопка Статистика дозволяє подивитися на графік мінімальних температур(у середньому) по місяцях кожного року."
-    "\nКнопки < > дозволяють змінювати дату")
+    info_text.insert("1.0","There is a search mode that allows you to find data by a specific date.\n"
+    "To do this, enter the date in the format YYYY-MM-DD."
+    "\nThen press Enter."
+    "\nThere is an edit mode that allows you to edit data."
+    "\nTo do this, you need to rewrite some information and press Enter."
+    "\nThe Search button allows you to find data by date from the drop-down list."
+    "\nThe Add button allows you to add data."
+    "\nThe Statistics button allows you to look at the graph of minimum temperatures (on average) by month of each year."
+    "\nThe < > buttons allow you to change the date")
 
 datas=json.load(open("rdu-weather-history.json"))
 set_data=set()
@@ -302,12 +302,12 @@ values=[datas[index][property] for property in ["date","tmin","tmax","prcp","sno
 radio_var=tkinter.BooleanVar()
 radio_var.trace_add("write",radio)
 radio_var.set(True)
-radio_search=Object(tkinter.Radiobutton(window,text="Шукати",variable=radio_var,value=True),0,4)
-radio_edit=Object(tkinter.Radiobutton(window,text="Редагувати",variable=radio_var,value=False),1,4)
-button_statistic=Object(tkinter.Button(window,width=10,text="Статистика",command=statistics),9,1,columnspan=2,pady=5)
+radio_search=Object(tkinter.Radiobutton(window,text="Search",variable=radio_var,value=True),0,4)
+radio_edit=Object(tkinter.Radiobutton(window,text="Edit",variable=radio_var,value=False),1,4)
+button_statistic=Object(tkinter.Button(window,width=10,text="Statistics",command=statistics),9,1,columnspan=2,pady=5)
 
-help_label=Object(tkinter.Label(window,text="Натисніть на кнопку, щоб дізнатися більше інформації"),0,6)
-help_button=Object(tkinter.Button(window,text="Довідка",command=help),1,6)
+help_label=Object(tkinter.Label(window,text="To discover more, press the button"),0,6)
+help_button=Object(tkinter.Button(window,text="Hint",command=help),1,6)
 
 window.mainloop()
 with open("rdu-weather-history.json","w") as f:
