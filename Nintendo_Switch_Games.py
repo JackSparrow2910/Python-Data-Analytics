@@ -23,25 +23,18 @@ def fill_na(df):
     #Fill NA with essential values
     cols = ['VGChartz Score', 'Critic Score', 'User Score']
     for index, row in df.iterrows():
-        # Check count of NaN
         nan_count = row[cols].isna().sum()
         #If count of NaN is 1
         if nan_count == 1:
             nan_col = [col for col in cols if pd.isna(row[col])][0]
-            # Find columns with NaN
             non_nan_cols = [col for col in cols if col != nan_col]
-            # Calculate average two non-NaN columns
             mean_value = row[non_nan_cols].mean()
-            # Replace NaN to average
             df.loc[index, nan_col] = round(mean_value,1)
         #If count of NaN is 2
         elif nan_count == 2:
-            # Find columns without NaN
             non_nan_col = [col for col in cols if not pd.isna(row[col])][0]
-            # Find column with NaN
             nan_cols = [col for col in cols if pd.isna(row[col])]
             non_nan_value = row[non_nan_col]
-            # Replace all NaN to value from non-NaN column
             for col in nan_cols:
                 df.loc[index, col] = round(non_nan_value,1)
     
@@ -136,3 +129,4 @@ plt.savefig('test2.png')
 plt.show()
 #Save update csv file
 df.to_csv('update_nintendo_switch.csv')
+
